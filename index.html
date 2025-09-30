@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>CyberLabs BMC (Business Model Canvas)</title>
+    <meta name="title" content="CyberLabs BMC (Business Model Canvas)" />
+    <meta
+      name="description"
+      content="CyberLabs Business Model Canvas - Build, edit, and manage your business model online with real-time database integration, export options, and customizable design." />
+    <meta
+      name="keywords"
+      content="CyberLabs, Business Model Canvas, BMC, startup tools, entrepreneurship, business planning, canvas editor" />
+    <meta name="author" content="CyberLabs Team" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://digitopia-project.vercel.app/" />
+    <meta property="og:title" content="CyberLabs BMC (Business Model Canvas)" />
+    <meta
+      property="og:description"
+      content="Easily build and customize your Business Model Canvas with CyberLabs. Save to database, export as PDF, and collaborate online." />
+    <meta
+      property="og:image"
+      content="https://our-bmc.vercel.app/meta-image.jpg" />
+
+    <!-- Twitter -->
+    <meta
+      property="twitter:card"
+      content="https://our-bmc.vercel.app/meta-image.jpg" />
+    <meta
+      property="twitter:url"
+      content="https://digitopia-project.vercel.app/" />
+    <meta
+      property="twitter:title"
+      content="CyberLabs BMC (Business Model Canvas)" />
+    <meta
+      property="twitter:description"
+      content="CyberLabs Business Model Canvas - Build, edit, and manage your business model online with real-time database integration." />
+    <meta
+      property="twitter:image"
+      content="https://our-bmc.vercel.app/meta-image.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/imgs/favicon.svg" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Export Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./assets/CSS/style.css" />
+
+    <!-- Tailwind Config -->
+    <script src="./assets/JS/tailwind.js"></script>
+  </head>
+
+  <body class="bg-gray-50 dark:bg-dark-900 transition-colors duration-300">
+    <!-- Sidebar (starts closed) -->
+    <aside
+      id="sidebar"
+      class="sidebar sidebar-closed fixed left-0 top-0 h-full w-64 bg-white dark:bg-dark-800 shadow-2xl z-50 no-print">
+      <div
+        class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between">
+        <h2
+          class="text-xl font-bold text-gray-800 dark:text-white flex items-center gap-2">
+          <i class="fas fa-chart-line text-primary-500"></i>CyberLabs BMC
+        </h2>
+        <button
+          type="button"
+          title="toggleSidebar"
+          onclick="toggleSidebar()"
+          class="text-gray-500 dark:text-gray-400">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+
+      <nav class="p-4 space-y-2">
+        <button
+          type="button"
+          title="toggleEditMode"
+          onclick="toggleEditMode()"
+          class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left hover:bg-gray-100 dark:hover:bg-dark-900 text-gray-700 dark:text-gray-300 transition">
+          <i class="fas fa-edit w-5"></i>
+          <span id="editModeText">Enable Edit Mode</span>
+        </button>
+        <button
+          type="button"
+          title="exportAsImage"
+          onclick="exportAsImage()"
+          class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left hover:bg-gray-100 dark:hover:bg-dark-900 text-gray-700 dark:text-gray-300 transition">
+          <i class="fas fa-image w-5"></i> Export Image
+        </button>
+        <button
+          type="button"
+          title="exportAsPDF"
+          onclick="exportAsPDF()"
+          class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left hover:bg-gray-100 dark:hover:bg-dark-900 text-gray-700 dark:text-gray-300 transition">
+          <i class="fas fa-file-pdf w-5"></i> Export PDF
+        </button>
+        <button
+          type="button"
+          title="saveToDB"
+          onclick="saveToDB()"
+          class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left hover:bg-gray-100 dark:hover:bg-dark-900 text-gray-700 dark:text-gray-300 transition">
+          <i class="fas fa-cloud-upload-alt w-5"></i> Save to DB
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="min-h-screen">
+      <header
+        class="bg-white dark:bg-dark-800 shadow-sm sticky top-0 z-40 no-print">
+        <div class="px-4 py-4 flex items-center justify-between">
+          <button
+            type="button"
+            title="toggleSidebar"
+            onclick="toggleSidebar()"
+            class="text-gray-500 dark:text-gray-400">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+
+          <h1
+            class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+            <i class="fas fa-layer-group text-primary-500"></i> Business Model
+            Canvas
+          </h1>
+
+          <button
+            type="button"
+            title="toggleTheme"
+            onclick="toggleTheme()"
+            class="p-2 rounded-full bg-gray-200 dark:bg-dark-700">
+            <i id="themeIcon" class="fas fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <main class="p-6">
+        <div
+          id="canvasGrid"
+          class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+      </main>
+    </div>
+    <!-- Password Modal -->
+    <div
+      id="passwordModal"
+      class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50 no-print">
+      <div
+        class="bg-white dark:bg-dark-800 rounded-xl shadow-2xl w-full max-w-md mx-4 p-6">
+        <h3
+          class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          Enter Password
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Owner authentication required to edit
+        </p>
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Enter password"
+          class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-dark-900 dark:text-white mb-4" />
+        <div class="flex gap-3">
+          <button
+            onclick="verifyPassword()"
+            class="flex-1 bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg font-medium transition">
+            Verify
+          </button>
+          <button
+            onclick="closePasswordModal()"
+            class="flex-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-3 rounded-lg font-medium transition">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Edit Modal -->
+    <div
+      id="editModal"
+      class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50 no-print">
+      <div
+        class="bg-white dark:bg-dark-800 rounded-xl shadow-2xl w-full max-w-2xl p-6">
+        <h3 class="text-xl font-bold mb-4" id="editModalTitle">Edit Section</h3>
+        <textarea
+          title="editModalInput"
+          id="editModalInput"
+          rows="6"
+          class="w-full px-4 py-3 border rounded-lg dark:bg-dark-900 dark:text-white mb-4 resize-vertical"></textarea>
+
+        <label class="block mb-1 text-gray-700 dark:text-gray-300"
+          >Theme Color</label
+        >
+        <select
+          title="themeColorPicker"
+          id="themeColorPicker"
+          class="w-full mb-4 px-3 py-2 rounded-lg border dark:bg-dark-900 dark:text-white">
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="purple">Purple</option>
+          <option value="pink">Pink</option>
+          <option value="orange">Orange</option>
+          <option value="indigo">Indigo</option>
+          <option value="teal">Teal</option>
+        </select>
+
+        <label class="block mb-1 text-gray-700 dark:text-gray-300"
+          >Background Color</label
+        >
+        <select
+          title="bgColorPicker"
+          id="bgColorPicker"
+          class="w-full mb-4 px-3 py-2 rounded-lg border dark:bg-dark-900 dark:text-white">
+          <option value="white">White</option>
+          <option value="gray-100">Gray</option>
+          <option value="blue-50">Blue</option>
+          <option value="green-50">Green</option>
+          <option value="pink-50">Pink</option>
+          <option value="yellow-50">Yellow</option>
+        </select>
+
+        <div class="flex gap-3">
+          <button
+            title="saveItem"
+            onclick="saveItem()"
+            class="flex-1 bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg">
+            <i class="fas fa-save mr-2"></i> Save
+          </button>
+          <button
+            title="closeColorModal"
+            onclick="closeEditModal()"
+            class="flex-1 bg-gray-200 dark:bg-gray-700 px-6 py-3 rounded-lg">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div
+      id="notification"
+      class="hidden fixed top-4 right-4 bg-white dark:bg-dark-800 shadow-xl rounded-lg px-6 py-4 z-[60]">
+      <div class="flex items-center gap-3">
+        <i id="notifIcon" class="fas fa-check-circle text-2xl"></i>
+        <p id="notifText" class="text-gray-800 dark:text-white font-medium"></p>
+      </div>
+    </div>
+    <!-- Color Picker Modal -->
+    <div
+      id="colorModal"
+      class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50 no-print">
+      <div
+        class="bg-white dark:bg-dark-800 rounded-xl shadow-2xl w-full max-w-md p-6">
+        <h3 class="text-xl font-bold mb-4">Choose Colors</h3>
+
+        <label class="block mb-1 text-gray-700 dark:text-gray-300"
+          >Card Background</label
+        >
+        <input
+          title="bgColorInput"
+          type="color"
+          id="bgColorInput"
+          class="w-full h-10 mb-4 rounded cursor-pointer" />
+
+        <label class="block mb-1 text-gray-700 dark:text-gray-300"
+          >Items Color</label
+        >
+        <input
+          title="itemColorInput"
+          type="color"
+          id="itemColorInput"
+          class="w-full h-10 mb-6 rounded cursor-pointer" />
+
+        <div class="flex gap-3">
+          <button
+            type="button"
+            onclick="saveColors()"
+            class="flex-1 bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg">
+            <i class="fas fa-save mr-2"></i> Save
+          </button>
+          <button
+            type="button"
+            onclick="closeColorModal()"
+            class="flex-1 bg-gray-200 dark:bg-gray-700 px-6 py-3 rounded-lg">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./assets/JS/data.js"></script>
+    <script type="module" src="./assets/JS/main.js"></script>
+  </body>
+</html>
