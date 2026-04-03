@@ -1,19 +1,38 @@
-# CyberLabs BMC (Business Model Canvas)
+# TrackUp — Business Model Canvas
 
-An interactive **Business Model Canvas** web app built with **TailwindCSS**, **JavaScript**, and **MongoDB**. 🚀
-This tool allows entrepreneurs, students, and startups to **design, edit, and manage their BMC** online with real-time database support.
+An interactive **Business Model Canvas** built for **TrackUp** — Egypt's first structured pre-career decision platform for engineering students.
+
+Built with **TailwindCSS**, **JavaScript**, and **MongoDB**. 🚀
+
+> TrackUp helps engineering students discover the right career path through smart assessment, personalized roadmaps, and expert mentorship.
 
 ---
 
 ## ✨ Features
 
-- **Interactive Canvas** 📌 – Drag, resize, and edit business model sections.
+- **Interactive Canvas** 📌 – View and edit all 9 BMC blocks.
 - **Custom Colors** 🎨 – Change card background and text colors with a built-in color picker.
-- **Secure Edit Mode** 🔑 – Password-protected editing.
-- **Dark/Light Mode** 🌙 – Toggle between themes with a single click.
-- **MongoDB Integration** 💾– Data automatically saved and loaded from the database.
+- **Secure Edit Mode** 🔑 – Password-protected editing (owner only).
+- **Dark / Light Mode** 🌙 – Toggle between themes with a single click.
+- **MongoDB Integration** 💾 – Data automatically saved and loaded from the database.
 - **Export Options** 📤 – Export your canvas as a **high-quality PNG or PDF**.
-- **Responsive Design** 📱– Works across desktop and mobile devices.
+- **Responsive Design** 📱 – Works across desktop and mobile devices.
+
+---
+
+## 🗂️ TrackUp BMC Overview
+
+| Block | Content |
+|---|---|
+| **Key Partners** | ITI Egypt · Udemy · University Career Offices |
+| **Key Activities** | Platform Dev · Mentor Vetting · Algorithm Tuning |
+| **Key Resources** | Web Platform · Matching Algorithm · Mentor Network |
+| **Value Proposition** | First pre-career decision tool for EG engineering students — result in under 5 min |
+| **Customer Relationships** | Free Self-service · Premium 1-on-1 Mentorship |
+| **Channels** | Web App · Social Media · University Ambassadors |
+| **Customer Segments** | Engineering Students (420K) · Fresh Graduates |
+| **Cost Structure** | Hosting · Mentor Fees · Marketing |
+| **Revenue Streams** | Test 99 EGP · Session 299 EGP · Premium 199 EGP/mo · Commission 10–15% |
 
 ---
 
@@ -24,27 +43,26 @@ This tool allows entrepreneurs, students, and startups to **design, edit, and ma
 - **Libraries:**
   - `html2canvas` (for screenshots)
   - `jsPDF` (for PDF export)
+  - `dotenv` (for environment variables)
 
 ---
 
 ## 📂 Project Structure
 
 ```
-
 ├── assets/
-│ ├── CSS/
-│ │ └── style.css # Custom styles
-│ ├── JS/
-│ │ ├── main.js # App logic
-│ │ └── tailwind.js # Tailwind config
-│ └── imgs/ # Logos / favicon
-├── data.js # Default canvas data
-├── index.html # Main UI
-├── server.js # Backend API (Express + MongoDB)
-├── package.json # Node.js dependencies
-├── .env # Environment variables (MongoDB, password, etc.)
-└── README.md # Project documentation
-
+│   ├── CSS/
+│   │   └── style.css
+│   ├── JS/
+│   │   ├── main.js       # App logic
+│   │   ├── data.js       # Default canvas data
+│   │   ├── server.js     # Express + MongoDB backend
+│   │   └── tailwind.js   # Tailwind config
+│   └── imgs/
+├── index.html
+├── package.json
+├── .env              # Environment variables (not committed)
+└── README.md
 ```
 
 ---
@@ -55,7 +73,7 @@ This tool allows entrepreneurs, students, and startups to **design, edit, and ma
 
 ```bash
 git clone https://github.com/Eng-Ahmed-Hussien/Business-Model-Canvas.git
-cd cyberlabs-bmc
+cd Business-Model-Canvas
 ```
 
 ### 2. Install Dependencies
@@ -71,62 +89,53 @@ Create a `.env` file in the project root:
 ```env
 MONGODB_URI=your-mongodb-connection-string
 PORT=3000
-ADMIN_PASS=********
-DB_NAME=********
-COLLECTION_NAME=*******
+DB_NAME=your-database-name
+COLLECTION_NAME=your-collection-name
+ADMIN_PASS=your-admin-password
 ```
 
 ### 4. Run Backend
 
 ```bash
-node server.js
+node assets/JS/server.js
 ```
 
 ### 5. Open Frontend
 
-Just open `index.html` in your browser.
+Open `index.html` in your browser.
 
 ---
 
 ## 🔐 Password Protection
 
 - Edit Mode requires authentication.
-- Default password: **`**\*\*\*\*\***\*`** (from `.env`).
-- Change it by updating `ADMIN_PASS` in `.env`.
+- Password is set via `ADMIN_PASS` in `.env`.
+- Only the owner can edit canvas content.
 
 ---
 
 ## 📤 Export Options
 
 - **Export as PNG** – High-resolution canvas screenshot.
-- **Export as PDF** – A4 landscape PDF including the whole canvas.
+- **Export as PDF** – A4 landscape PDF of the full canvas.
 - Dark mode is preserved during export.
 
 ---
 
-## 👨‍💻 Author
+## 🔗 Links
 
-Developed by **CyberLabs Team** 💡
-For more info, reach out at [cyberlabs@example.com](mailto:cyberlabs@example.com).
+- 🚀 **Live BMC:** [trackupv1-bcm.vercel.app](https://trackupv1-bcm.vercel.app/)
+- 📱 **Platform Demo:** [track-up-orpin.vercel.app](https://track-up-orpin.vercel.app/)
+- 📄 **Pitch Deck:** [View on Canva](https://canva.link/jsrkrkqke81hj9y)
 
-```
+---
 
-```
+## 👨‍💻 Team
 
-## 📸 Screenshots
+**Ali Elsyed** — Product & Strategy
+- Al-Azhar University, Electrical Engineering
+- [LinkedIn](https://www.linkedin.com/in/ali-elsyed)
 
-### Light Mode
-
-![Light Mode](./assets/imgs/screenshot-light.png)
-
-### Dark Mode
-
-![Dark Mode](./assets/imgs/screenshot-dark.png)
-
-### Export as PDF
-
-![PDF Export](./assets/imgs/screenshot-pdf.png)
-
-```
-
-```
+**Ahmed Hussein** — Tech Lead & Software Architect
+- Menofia University, Electronic Engineering (CSE)
+- [LinkedIn](https://www.linkedin.com/in/ahmed-hussien-front-end-developer/)
